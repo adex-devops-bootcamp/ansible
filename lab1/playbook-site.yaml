@@ -21,5 +21,18 @@
         group: root
         mode: '0644'
 
+    - name: Fix nginx default site
+      copy:
+        dest: /etc/nginx/http.d/default.conf
+        content: |
+          server {
+              listen 80 default_server;
+
+              location / {
+                  root /var/lib/nginx/html;
+                  index index.html;
+              }
+          }
+
     - name: Reload nginx if config changes
       command: nginx -s reload
