@@ -5,7 +5,7 @@
   tasks:
     - name: Create custom index.html
       copy:
-        dest: /usr/share/nginx/html/index.html
+        dest: /var/lib/nginx/html/index.html
         content: |
           <!DOCTYPE html>
           <html>
