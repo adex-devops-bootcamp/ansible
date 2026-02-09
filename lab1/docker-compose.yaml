@@ -1,0 +1,36 @@
+version: "3.9"
+
+services:
+  node1:
+    image: alpine:3.19
+    container_name: node1
+    command: >
+      sh -c "
+      apk update &&
+      apk add --no-cache openssh python3 sudo &&
+      adduser -D ansible &&
+      echo 'ansible:ansible' | chpasswd &&
+      echo 'ansible ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers &&
+      ssh-keygen -A &&
+      /usr/sbin/sshd -D
+      "
+    ports:
+      - "2222:22"
+      - "8002:80"
+
+  node2:
+    image: alpine:3.19
+    container_name: node2
+    command: >
+      sh -c "
+      apk update &&
+      apk add --no-cache openssh python3 sudo &&
+      adduser -D ansible &&
+      echo 'ansible:ansible' | chpasswd &&
+      echo 'ansible ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers &&
+      ssh-keygen -A &&
+      /usr/sbin/sshd -D
+      "
+    ports:
+      - "2223:22"
+      - "8003:80"

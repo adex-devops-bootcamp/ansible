@@ -1,0 +1,27 @@
+- name: Replace Nginx default page with a custom one
+  hosts: docker_nodes
+  become: true
+
+  tasks:
+    - name: Create custom index.html
+      copy:
+        dest: /usr/share/nginx/html/index.html
+        content: |
+          <!DOCTYPE html>
+          <html>
+          <head>
+              <title>My Custom Page</title>
+          </head>
+          <body>
+              <h1>Hello from Ansible!</h1>
+              <p>This is a minimal custom page.</p>
+          </body>
+          </html>
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Reload nginx if config changes
+      command: nginx -s reload
+      args:
+        warn: false

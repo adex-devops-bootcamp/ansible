@@ -1,8 +1,12 @@
-## Ansible
+# Ansible
+
+## Lab 1
 
 ### What is Ansible?
 - Agentless Automation Tool
 - Configuring servers, deploying apps, running repeatable tasks
+- Can be installed with `pip` (python package manager) or `apt` as well.
+- https://docs.ansible.com/
 
 ### How does it work?
 - Control Node is your laptop or CI Runner
@@ -13,3 +17,9 @@
 ### Inventory
 - Static is maintained in YAML and ini
 - Also supports Dynamic Inventory (cloud providers etc.)
+
+### Playbook
+- YAML only
+- Hosts to be executed in
+- Tasks to be executed
+- Order of Execution (Imperative)
