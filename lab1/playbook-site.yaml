@@ -23,5 +23,3 @@
 
     - name: Reload nginx if config changes
       command: nginx -s reload
-      args:
-        warn: false
