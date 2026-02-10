@@ -1,0 +1,21 @@
+- name: Module basics
+  hosts: docker_nodes
+  become: true
+
+  tasks:
+    - name: Ensure nginx is installed
+      apk:
+        name: nginx
+        state: present
+
+    - name: Ensure web root exists
+      file:
+        path: /var/lib/nginx/html
+        state: directory
+
+    - name: Create index.html
+      copy:
+        dest: /var/lib/nginx/html/index.html
+        content: |
+          <h1>Modules only</h1>
+          <p>No shell, no command</p>

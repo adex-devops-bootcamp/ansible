@@ -1,0 +1,16 @@
+- name: Copy a config file
+  hosts: docker_nodes
+  become: true
+
+  tasks:
+    - name: Create config file
+      copy:
+        dest: /etc/myapp.conf
+        content: |
+          port=8080
+          debug=false
+---
+- name: Copy local file
+  copy:
+    src: files/app.conf
+    dest: /etc/app.conf

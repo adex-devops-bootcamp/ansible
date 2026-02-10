@@ -1,0 +1,11 @@
+- name: Install multiple packages
+  hosts: docker_nodes
+  become: true
+
+  tasks:
+    - name: Install nginx and curl
+      apk:
+        name:
+          - nginx
+          - curl
+        state: present

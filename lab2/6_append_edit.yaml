@@ -1,0 +1,22 @@
+---
+- name: Edit config safely
+  hosts: docker_nodes
+  become: true
+
+  tasks:
+    - name: Enable debug
+      lineinfile:
+        path: /etc/myapp.conf
+        line: debug=true
+        create: true
+---
+- name: Replace text
+  hosts: docker_nodes
+  become: true
+
+  tasks:
+    - name: Change port
+      replace:
+        path: /etc/myapp.conf
+        regexp: '^port=.*'
+        replace: 'port=9090'

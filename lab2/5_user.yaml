@@ -1,0 +1,15 @@
+- name: User management
+  hosts: docker_nodes
+  become: true
+
+  tasks:
+    - name: Create app user
+      user:
+        name: appuser
+        shell: /bin/sh
+        state: present
+---
+- name: Remove user
+  user:
+    name: appuser
+    state: absent

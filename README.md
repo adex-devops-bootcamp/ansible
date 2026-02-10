@@ -23,3 +23,18 @@
 - Hosts to be executed in
 - Tasks to be executed
 - Order of Execution (Imperative)
+
+## Lab 2
+
+### Module
+- Small program that runs on Target Nodes
+- Does one specific job
+- Example: install a package, copy a file, create user, etc.
+- Module Example: apk, copy, file, user, etc.
+- Why to use instead of `command: apk add nginx`
+
+### Variables
+### Facts
+### Templates (Jinja2)
+### Handlers
+### Roles
