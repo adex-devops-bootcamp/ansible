@@ -1,0 +1,22 @@
+---
+- name: File check
+  hosts: docker_nodes
+
+  tasks:
+    - name: Check index.html
+      stat:
+        path: /var/lib/nginx/html/index.html
+      register: index_file
+
+    - name: Show result
+      debug:
+        msg: "File exists"
+      when: index_file.stat.exists
+---
+- name: Debug demo
+  hosts: docker_nodes
+
+  tasks:
+    - name: Print hostname
+      debug:
+        msg: "Running on {{ inventory_hostname }} and {{ ansible_hostname }}"
