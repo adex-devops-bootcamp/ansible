@@ -19,4 +19,4 @@
   tasks:
     - name: Print hostname
       debug:
-        msg: "Running on {{ inventory_hostname }}"
+        msg: "Running on {{ inventory_hostname }} and {{ ansible_hostname }}"
