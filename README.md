@@ -42,13 +42,63 @@
 - Variables will always replace Facts (Facts are the lowest priority variables)
 
 ### Variables
-- Task level variables always take precedence.
 - Variables passed in CLI takes next priority. `-e`
+- Task level variables `vars:` inside `tasks`.
 - Then comes `vars` in playbooks' top hierarchy (not to confuse with tasks)
 - `var_files` used in playbook comes next.
 - Lastly comes the facts gathered.
 
-<!--
+## Lab 3
+
+### Conditionals (when)
+- Run a task only if a condition is true.
+
+### Loops
+- Avoid repetitive tasks
+- Apply the same module logic to multiple items
+- Keep playbooks DRY (Don't Repeat Yourself) and readable
+
+### Handlers
+- Special tasks that run only when notified.
+- Prevent unnecessary actions (like restarts).
+- Example: Restart nginx only if config changed.
+- Note: Handlers run at the end of the play, not immediately.
+
+### Templates (Jinja2)
+- Files with variables that get rendered on the worker.
+- Use Case: Config files need dynamic values.
+
+### Roles
+- Structured way to organize tasks, handlers, templates, variables, files, and defaults
+- in a reusable way.
+
+### Error Handling
+- Control how failures behave.
+- Not all failures should stop automation
+- By default, if any task fails, the playbook stops executing
+- `ignore_errors:` continue even if a task fails
+- `failed_when:` custom condition under which a task is considered failed
+
+<!-- Ansible Fundamentals
+
+1. Ansible Architecture & Execution Model (control node vs managed nodes)
+2. Inventory (static, groups, host_vars, group_vars)
+3. Modules (package, file, copy, template, service, command)
+4. Tasks & Plays (how playbooks run, order, idempotency)
+5. Variables (all sources + usage)
+6. Variable Precedence & Scope
+7. Facts (gather_facts, system info)
+8. Conditionals (when)
+9. Loops
+10. Handlers & Notifications
+11. Templates (Jinja2 basics)
+12. Roles (structure + reuse)
+13. Error Handling (failed_when, ignore_errors)
+14. Privilege Escalation (become)
+-->
+
+<!-- Full Ansible Topics
+
 1. Introduction & Architecture
 2. Installation & Setup
 3. Inventory (static & dynamic)

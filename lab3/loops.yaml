@@ -1,0 +1,33 @@
+- name: Install packages
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - nginx
+    - curl
+    - git
+---
+- name: Check files
+  stat:
+    path: "{{ item }}"
+  loop:
+    - /etc/nginx/nginx.conf
+    - /etc/ssh/sshd_config
+  register: file_stats
+#file_stats.results[0].stat.exists
+---
+- block:
+    - name: Install package
+      apt:
+        name: "{{ pkg }}"
+        state: present
+
+    - name: Enable service
+      service:
+        name: "{{ pkg }}"
+        state: started
+  loop:
+    - nginx
+    - redis
+  loop_control:
+    loop_var: pkg

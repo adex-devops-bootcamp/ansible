@@ -1,0 +1,10 @@
+- name: Restart nginx if installed
+  service:
+    name: nginx
+    state: restarted
+  ignore_errors: yes
+---
+- name: Check if docker user exists
+  command: grep '^docker:' /etc/passwd
+  register: docker_user_check
+  failed_when: docker_user_check.rc != 0

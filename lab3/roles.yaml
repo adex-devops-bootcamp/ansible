@@ -1,0 +1,9 @@
+---
+- name: Deploy nginx via role
+  hosts: ec2_nodes
+  become: true
+  roles:
+    - role: nginx
+      vars:
+        nginx_server_name: mysite.local
+        keepalive_timeout: 75

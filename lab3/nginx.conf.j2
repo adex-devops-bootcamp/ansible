@@ -1,0 +1,12 @@
+user www-data;
+worker_processes auto;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    sendfile on;
+    keepalive_timeout {{ keepalive_timeout }};
+    include /etc/nginx/conf.d/*.conf;
+}
